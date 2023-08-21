@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  hospital-api:
+    build:
+      context: ./back_end_services/km_hospital_be
+    image: km-hospital-api:v0.2-alpine
+    ports:
+      - "8001:8000"  
+
+  patient-api:
+    build:
+      context: ./back_end_services/km_patient_data_be
+    image: km-patient-api:v0.2-alpine
+    ports:
+      - "8000:8000"  
+
+  operator-fe:
+    build:
+      context: ./front_end_services/km_operator
+    image: km-operator-fe:v0.1-alpine
+    ports:
+      - "3000:3000" 
+
+  regional-fe:
+    build:
+      context: ./front_end_services/km_regional_hospital
+    image: km-regional-fe:v0.1-alpine
+    ports:
+      - "3001:3000"
+
+  ambulance-fe:
+    build:
+      context: ./front_end_services/km_ambulance
+    image: km-ambulance-fe:v0.1-alpine
+    ports:
+      - "3002:3000" 
